@@ -39,7 +39,7 @@ def ejercicio1_action() -> str:
     nota_2 = form["nota2"]
     nota_3 = form["nota3"]
     asistencia = form["asistencia"]
-    formulario = [nota_1, nota_2, nota_3, asistencia]
+    formulario = [nota_1, nota_2, nota_3, asistencia] # utilizo esta lista para mostrar los valores del formulario junto al render
     # validaciones
     try:
         # que sean numeros
@@ -65,7 +65,7 @@ def ejercicio1_action() -> str:
     # retornar template
     return render_template("ejercicio1.html", promedio=promedio, respuesta=respuesta, formulario=formulario)
 
-@app.route("/ejercicio2")
+@app.route("/ejercicio2", methods=["GET"])
 def ejercicio2() -> str:
     """Retorna el render de la página del ejercicio 2.
 
@@ -73,8 +73,35 @@ def ejercicio2() -> str:
         str: Página renderizada.
     """
     # retornar template
-    return render_template("ejercicio2.html")
+    return render_template("ejercicio2.html", formulario=["", "", "", ""])
 
-# Inicializar app
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route("/ejercicio2", methods=["POST"])
+def ejercicio2_action() -> str:
+    """Retorna el render de la página del ejercicio 2.
+    Este método se llama como POST, hará la validación de los nombres y mostrará
+    el resultado junto al renderizado.
+
+    Returns:
+        str: Página renderizada.
+    """
+    # obtener valores del formulario
+    form = request.form
+    nombre_1 = form["nombre1"]
+    nombre_2 = form["nombre2"]
+    nombre_3 = form["nombre3"]
+    formulario = [nombre_1, nombre_2, nombre_3] # utilizo esta lista para mostrar los valores del formulario junto al render
+    # validar nombre mas largo
+    nombre_mas_largo = nombre_1
+    if len(nombre_2) > len(nombre_mas_largo):
+        nombre_mas_largo = nombre_2
+    if len(nombre_3) > len(nombre_mas_largo):
+        nombre_mas_largo = nombre_3
+    # obtener largo
+    largo_nombre_mas_largo = len(nombre_mas_largo)
+    # retornar template
+    return render_template(
+        "ejercicio2.html",
+        formulario=formulario,
+        resultado_nombre=nombre_mas_largo,
+        resultado_largo=largo_nombre_mas_largo
+    )
