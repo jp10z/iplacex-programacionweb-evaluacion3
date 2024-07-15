@@ -46,3 +46,23 @@ python3 app/main.py
 ```
 http://localhost:5000/
 ```
+
+## Capturas de pantalla
+
+A continuación presento capturas de pantalla de la web en ejecución
+
+### Ejecución desde terminal
+
+![Imágen ejecución](assets/imagen-ejecucion.png)
+
+### Home del sitio
+
+![Imágen home](assets/imagen-home.png)
+
+### Ejercicio 1
+
+![Imágen ejercicio 1](assets/imagen-ejercicio1.png)
+
+### Ejercicio 2
+
+![Imágen ejercicio 2](assets/imagen-ejercicio2.png)

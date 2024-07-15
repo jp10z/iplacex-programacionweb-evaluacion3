@@ -105,3 +105,6 @@ def ejercicio2_action() -> str:
         resultado_nombre=nombre_mas_largo,
         resultado_largo=largo_nombre_mas_largo
     )
+
+if __name__ == '__main__':
+    app.run(debug=True)
